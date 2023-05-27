@@ -12,6 +12,9 @@ Menjalankan aplikasi dilakukan dengan cara unduh dan salin pada tools yang digun
   C:\xampp\htdocs\
 ```
 
+Gunakan url berikut untuk mengakses CRM dashboard
+'localhost/admin'
+
 <details>
 
 <summary>Konfigurasi Database</summary>
@@ -33,6 +36,18 @@ Konfigurasi pada file connection.php, perbaharui nama database
     $databaseName = "id20382767_autoclub";
 ```
 </details>
+
+
+
+## Features
+
+- CRM Dashboard
+- CRUD Produk
+- Login terpisah untuk admin dan custumer
+- Welcome email
+- Upload image
+
+
 
 
 ## Tabel Pada Database
