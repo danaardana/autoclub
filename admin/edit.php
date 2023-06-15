@@ -60,7 +60,7 @@ $pictures = mysqli_query($conn, $queryC);
             <!-- Forum -->
             <div class="tab-pane active" id="cars-form">
                 <!-- Form for a new car -->
-                <form action="backend/car.php" method="post" class="form-horizontal form-bordered">
+                <form action="backend/update.php?id=<?php echo $id ?>" method="post" class="form-horizontal form-bordered">
                     <div class="col-md-6">  
                         <div class="block">
                             <!-- General Elements Title -->
@@ -70,6 +70,23 @@ $pictures = mysqli_query($conn, $queryC);
                             <!-- END General Elements Title -->
 
                             <!-- General Elements Content -->                                  
+                            <div class="form-group">
+                                <label class="col-md-3 control-label" for="example-select2">Availablity</label>
+                                <div class="col-md-5">
+                                    <select id="car_status_shop" name="car_status_shop" class="select-select2" style="width: 100%;" data-placeholder="Choose one..">
+                                    <?php if ($car['car_status_shop'] == "AVAILABLE" ) { ?> 
+                                        <option selected value="Ford">Available</option> 
+                                    <?php } else { ?> 
+                                        <option value="AVAILABLE">Available</option>
+                                    <?php } ?>
+                                    <?php if ($car['car_status_shop'] == "WAITING" ) { ?> 
+                                        <option selected value="WAITING">In the process</option> 
+                                    <?php } else { ?> 
+                                        <option value="WAITING">In the process</option>
+                                    <?php } ?>                           
+                                    </select>
+                                </div>
+                            </div>                              
                             <div class="form-group">
                                 <label class="col-md-3 control-label" for="example-select2">Maker</label>
                                 <div class="col-md-5">
@@ -251,6 +268,11 @@ $pictures = mysqli_query($conn, $queryC);
                                     <?php } else { ?> 
                                         <option value="Rental">Rental</option>
                                     <?php } ?>
+                                    <?php if ($car['car_status'] == "Sold" ) { ?> 
+                                        <option selected value="Sold">Sold</option> 
+                                    <?php } else { ?> 
+                                        <option value="Sold">Sold</option>
+                                    <?php } ?>  
                                     </select>
                                 </div>
                             </div>
@@ -451,7 +473,7 @@ $pictures = mysqli_query($conn, $queryC);
                             <div class="form-group">
                                 <label class="col-md-3 control-label" for="car-drivetrain">Engine</label>
                                 <div class="col-sm-6">
-                                    <input type="text" name="car-hp" value="<?php echo $car['car_engine']; ?>" class="form-control" required>
+                                    <input type="text" name="car-engine" value="<?php echo $car['car_engine']; ?>" class="form-control" required>
                                     <span class="help-block">1460 hp  3.0L  V-6</span>
                                 </div>
                             </div>
@@ -510,39 +532,8 @@ $pictures = mysqli_query($conn, $queryC);
                         </div>                      
                 </form>
                 <!-- END of Form for a new car -->
-                
-                <div class="block full">
-                    <!-- Color Pickers Title -->
-                    <div class="block-title">
-                        <!-- Color Pickers Title -->
-                        <div class="block-title">
-                            <div class="block-options pull-right">
-                                <a href="javascript:void(0)" class="btn btn-effect-ripple btn-default toggle-bordered enable-tooltip" data-toggle="button" title="Toggles .form-bordered class">Borderless</a>
-                            </div>
-                            <h2>Upload Image</h2>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-12">
-                                <form action="backend/upload.php?" method="post" enctype="multipart/form-data">
-                                    <div class="col-md-9">
-                                        <input type="file" name="fileToUpload" class="form-control" id="fileToUpload" required>
-                                    </div>                                    
-                                    <div class="col-md-3">
-                                        <input type="submit" class="btn btn-effect-ripple btn-xl btn-success" value="Upload" name="submit">
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                        <?php if (isset($_SESSION['image'])) { ?>
-                            <div class="form-group">
-                                <label class="col-md-3 control-label" for="car-minus"><?php echo $_SESSION['errorImg']; ?> </label>
-                            </div>
-                            <?php unset($_SESSION['image']); ?>
-                        <?php } ?>
-                    </div>
-                </div>
-            </div>
-            
+               
+            </div> 
             <div class="tab-pane" id="cars-media">  
                 <div class="row gallery">
                     <?php  if (mysqli_num_rows($pictures) > 0) {

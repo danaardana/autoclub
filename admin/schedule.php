@@ -25,6 +25,9 @@ $queryE = "SELECT * FROM employees WHERE emp_status = 'Available'";
 $formEmployees = mysqli_query($conn, $queryE);
 $queryF = " SELECT * FROM timeschedule";
 $formTimes = mysqli_query($conn, $queryF);
+
+$queryG = "SELECT * FROM schedule LEFT JOIN newslatter ON sch_cus_nw = nw_id LEFT JOIN cars ON sch_car = car_id INNER JOIN custumer ON sch_cus";
+$schedules = mysqli_query($conn, $queryG);
 ?>
 
 <!-- Page content -->
@@ -143,8 +146,8 @@ $formTimes = mysqli_query($conn, $queryF);
                 <!-- END General Elements Content -->
             </div>
             <!-- END General Elements Block -->
-
             </div>
+
             <div class="tab-pane" id="schedules-tables">  
                 <div class="row">
                     <div class="col-lg-6">
@@ -274,43 +277,40 @@ $formTimes = mysqli_query($conn, $queryF);
                         <table id="example-datatable" class="table table-striped table-bordered table-vcenter">
                             <thead>
                                 <tr>
-                                    <th class="text-center" style="width: 50px;">ID</th>
                                     <th>User</th>
                                     <th>Email</th>
                                     <th>Phone</th>
-                                    <th>Car</th>
-                                    <th style="width: 120px;">Status</th>
+                                    <th style="width: 120px;">Car</th>
+                                    <th >Status</th>
                                     <th class="text-center" style="width: 75px;"><i class="fa fa-flash"></i></th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php
-                                $labels['0']['class'] = "label-success";
-                                $labels['0']['text'] = "Availablee";
-                                $labels['1']['class'] = "label-info";
-                                $labels['1']['text'] = "Fully Booked";
-                                $labels['2']['class'] = "label-danger";
-                                $labels['2']['text'] = "Cancel";
-                                $labels['3']['class'] = "label-warning";
-                                $labels['3']['text'] = "Pending..";
+                                $labels['On Time']['class'] = "label-success";
+                                $labels['On Time']['text'] = "On Time";
+                                $labels['Delay']['class'] = "label-info";
+                                $labels['Delay']['text'] = "Delay";
+                                $labels['Cancel']['class'] = "label-danger";
+                                $labels['Cancel']['text'] = "Cancel";
+                                $labels['On Call']['class'] = "label-warning";
+                                $labels['On Call']['text'] = "On Call";
                                 ?>
-                                <?php for($i=1; $i<31; $i++) { ?>
+                                <?php while($show = mysqli_fetch_assoc($schedules)) { ?>
                                 <tr>
-                                    <td class="text-center"><?php echo $i; ?></td>
-                                    <td><strong>AppUser<?php echo $i; ?></strong></td>
-                                    <td>app.user<?php echo $i; ?>@example.com</td>
-                                    <td><?php echo $rand = rand(181200000000, 182299999999); ?></td>
-                                    <td>Car </td>
-                                    <?php $rand = rand(0, 3); ?>
-                                    <td><span class="label<?php echo ($labels[$rand]['class']) ? " " . $labels[$rand]['class'] : ""; ?>"><?php echo $labels[$rand]['text'] ?></span></td>
+                                    <td><strong><?php echo $show['cus_name']; ?></strong></td>
+                                    <td><?php echo $show['cus_email']; ?></td>
+                                    <td><?php echo $show['cus_phone']; ?></td>
+                                    <td> <?php echo $show['car_maker']; echo ' '; echo $show['car_model']; echo ' '; echo $show['car_year']; ?>  </td>
+                                    <td><span class="label<?php echo ($labels[$show['sch_status']]['class']) ? " " . $labels[$show['sch_status']]['class'] : ""; ?>"><?php echo $labels[$show['sch_status']]['text'] ?></span></td>
                                     <td class="text-center">
-                                        <a href="#modal-edit" data-toggle="modal" title="Edit User" class="btn btn-effect-ripple btn-xs btn-success"><i class="fa fa-pencil"></i></a>
-                                        <a href="#modal-delete-" data-toggle="modal" title="Delete User" class="btn btn-effect-ripple btn-xs btn-danger"><i class="fa fa-times"></i></a>
+                                        <a href="#modal-edit-<?php echo $show['cus_phone'] ?>" data-toggle="modal" title="Edit User" class="btn btn-effect-ripple btn-xs btn-success"><i class="fa fa-pencil"></i></a>
+                                        <a href="#modal-delete-<?php echo $show['cus_phone'] ?>" data-toggle="modal" title="Delete User" class="btn btn-effect-ripple btn-xs btn-danger"><i class="fa fa-times"></i></a>
                                     </td>
                                 </tr>
                                 <?php } ?>
                                 <!-- Edit Tabs -->
-                                <div id="modal-edit" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+                                <div id="modal-edit-<?php echo $show['cus_phone'] ?>" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header-tabs">
@@ -336,7 +336,7 @@ $formTimes = mysqli_query($conn, $queryF);
                                 <!-- END Edit Tabs -->      
 
                                 <!-- Delete Modal -->
-                                <div id="modal-delete-" class="modal" tabindex="-1" role="dialog" aria-hidden="true">
+                                <div id="modal-delete-<?php echo $show['cus_phone'] ?>" class="modal" tabindex="-1" role="dialog" aria-hidden="true">
                                     <div class="modal-dialog modal-sm">
                                         <div class="modal-content">
                                             <div class="modal-body">
@@ -356,6 +356,7 @@ $formTimes = mysqli_query($conn, $queryF);
                 </div>
                 <!-- END Datatables Block -->
             </div>
+
             <div class="tab-pane" id="schedules-calendar">
                     <!-- FullCalendar Block -->
                     <div class="block full">
