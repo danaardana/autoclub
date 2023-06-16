@@ -113,6 +113,11 @@ $primary_nav = array(
         )
     ),
     array(
+        'name'  => 'Custumer',
+        'icon'  => 'gi gi-group',
+        'url'   => 'custumer.php'
+    )   ,  
+    array(
         'url'   => 'separator',
     ) ,
     array(
