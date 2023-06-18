@@ -1,7 +1,7 @@
 <?php 
 $to = $_SESSION['email']; 
 $id = $_SESSION['userId'];
-$from = 'rioardanaputra98@gmail.com'; 
+$from = 'kususdownloadpt1@gmail.com'; 
 $fromName = 'AUTOCLUB'; 
  
 $subject = "Send HTML Email in PHP by CodexWorld"; 

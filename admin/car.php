@@ -152,7 +152,7 @@ $cars = mysqli_query($conn, $queryB);
                             <div class="form-group">
                                 <label class="col-md-3 control-label" for="car-price">Price</label>
                                 <div class="col-sm-3">
-                                    <input type="text" class="form-control" name="car-price" placeholder="car-price" pattern="[0-9]+" required>
+                                    <input type="text" class="form-control" name="car-price" placeholder="car-price" pattern="[0-9\.]+" required>
                                 </div>
                                 <div class="col-md-3">
                                     <select id="car-pricetext" name="car-pricetext" class="form-control" size="1">

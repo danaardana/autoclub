@@ -265,16 +265,20 @@ if(isset($_POST['btnFull'])){
                                         <div class="b-submit__main-element">
                                             <label>Enter Your Phone Number</label>
                                             <?php if ($custumers['cus_phone'] == '') { ?>  
-                                                <input type="text" name="update-phone" required pattern="[0-9]+" />
+                                                <input type="text" name="update-phone" pattern="[0-9]+" />
                                             <?php } else { ?>   
-                                                <input type="text" name="update-phone" value="<?php echo $custumers['cus_phone']; ?>"pattern="[0-9]+" />
+                                                <input type="text" name="update-phone" value="<?php echo $custumers['cus_phone']; ?>" pattern="[0-9]+" />
                                             <?php } ?>
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-xs-12">
                                         <div class="b-submit__main-element">
                                             <label>Enter Your Email Address <span>*</span></label>
-                                            <input type="text" name="update-email" value="<?php echo $custumers['cus_email']; ?>" pattern="[^ @]*@[^ @]*" />
+                                            <?php if ($custumers['cus_phone'] == '') { ?>  
+                                            <input type="text" name="update-email" required pattern="[^ @]*@[^ @]*" />
+                                            <?php } else { ?>   
+                                            <input type="text" name="update-email" value="<?php echo $custumers['cus_email']; ?>" required pattern="[^ @]*@[^ @]*" />
+                                            <?php } ?>
                                         </div>
                                     </div>
                                 </div>

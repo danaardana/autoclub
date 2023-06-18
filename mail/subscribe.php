@@ -1,7 +1,7 @@
 <?php 
 $to = $_SESSION['email']; 
 $id = $_SESSION['userId'];
-$from = 'rioardanaputra98@gmail.com'; 
+$from = 'kususdownloadpt1@gmail.com'; 
 $fromName = 'AUTOCLUB'; 
  
 $subject = "Welcome as our family"; 
@@ -478,7 +478,7 @@ $htmlContent = '
                                                                 <table width="100%" bgcolor="#2c3e50" cellspacing="0" cellpadding="0" border="0" class="full-width" >
                                                                     <tbody>
                                                                         <tr>
-                                                                            <td height="28" align="center" style="font-family: Open Sans, sans-serif;font-size:11px; font-weight:normal; color:#7f8c8d">copyright by e-newsletter  |  <a href="autoclub-impel.000webhostapp.com/backend/unsubsribe/code=' . $id
+                                                                            <td height="28" align="center" style="font-family: Open Sans, sans-serif;font-size:11px; font-weight:normal; color:#7f8c8d">copyright by e-newsletter  |  <a href="autoclub-impel.000webhostapp.com/backend/unsubsribe/code=' . $id;
  $htmlContent .= '" style="color:#7f8c8d;">unsubscribe </a></td>
                                                                         </tr>
                                                                     </tbody>

@@ -63,19 +63,19 @@ $custumers = mysqli_query($conn, $queryG);
                     <div class="form-group">
                         <label class="col-md-3 control-label" for="example-text-input">Full Name</label>
                         <div class="col-md-6">
-                            <input type="text" id="form-name" name="form-name" class="form-control" placeholder="Name" required pattern="[A-Za-z\s]+" required>
+                            <input type="text" id="form-name" name="form-name" class="form-control" placeholder="Name" required pattern="[A-Za-z\s]+" >
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-3 control-label" for="example-email">Email</label>
                         <div class="col-md-6">
-                            <input type="email" id="form-email" name="form-email" class="form-control" placeholder="Email" required pattern="[^ @]*@[^ @]*" required>
+                            <input type="email" id="form-email" name="form-email" class="form-control" placeholder="Email" required pattern="[^ @]*@[^ @]*" >
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-3 control-label" for="example-phone">Phone Number</label>
                         <div class="col-md-6">
-                            <input type="text" id="form-phone" name="form-phone" class="form-control" placeholder="Phone" required pattern="[0-9]+" required>
+                            <input type="text" id="form-phone" name="form-phone" class="form-control" placeholder="Phone" required pattern="[0-9]+" >
                             <span class="help-block">Phone number with integrated Whatsapp account</span>
                         </div>
                     </div>
@@ -88,7 +88,7 @@ $custumers = mysqli_query($conn, $queryG);
                     <div class="form-group">
                         <label class="col-md-3 control-label" for="example-phone">Post Code</label>
                         <div class="col-md-6">
-                            <input type="text" id="form-phone" name="form-post-code" class="form-control" placeholder="Post Code" required pattern="[0-9]+">
+                            <input type="text" id="form-phone" name="form-post-code" class="form-control" placeholder="Post Code" pattern="[0-9]+">
                         </div>
                     </div>
                     <div class="form-group form-actions">

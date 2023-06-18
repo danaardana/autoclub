@@ -129,7 +129,7 @@ $footers= mysqli_query($conn, $query2);
 
     <section class="b-search">
         <div class="container">
-            <form action="backend\listings.php" method="POST" class="b-search__main">
+            <form action="listings.php" method="POST" class="b-search__main">
                 <div class="b-search__main-title wow zoomInUp" data-wow-delay="0.3s">
                     <h2>UNSURE WHICH VEHICLE YOU ARE LOOKING FOR? FIND IT HERE</h2>
                 </div>

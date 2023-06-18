@@ -551,21 +551,21 @@ else {
                                     <div class="b-detail__main-aside-about-form-links">
                                         <h4>SCHEDULE TEST DRIVE</h4>
                                     </div>
-                                    <form id="form1" action="backend\schedule.php" method="post">
+                                    <form id="form1" action="backend\schedule.php?id=<?php echo $id ?>" method="post">
                                         <?php if (isset($_SESSION['name'])) {?>
-                                        <input type="text" placeholder="<?php echo $_SESSION['name']; ?>" value="<?php echo $_SESSION['name']; ?>" name="book_name" />
-                                        <input type="email" placeholder="<?php echo $_SESSION['email']; ?>" value="<?php echo $_SESSION['email']; ?>" name="book_email" />
+                                        <input type="text" placeholder="<?php echo $_SESSION['name']; ?>" value="<?php echo $_SESSION['name']; ?>" required name="book_name" />
+                                        <input type="email" placeholder="<?php echo $_SESSION['email']; ?>" value="<?php echo $_SESSION['email']; ?>"  required name="book_email" />
                                             <?php if (isset($_SESSION['phone'])) { ?>
-                                            <input type="tel" placeholder="<?php echo $_SESSION['phone']; ?>" value="<?php echo $_SESSION['phone']; ?>" name="book_phone" />
+                                            <input type="tel" placeholder="<?php echo $_SESSION['phone']; ?>" value="<?php echo $_SESSION['phone']; ?>" required name="book_phone" />
                                             <?php } else { ?>
                                             <input type="tel" placeholder="PLEASE PROVIDE YOU'R PHONE NUMBER" value="" name="book_phone" />
-                                        <input type="hidden" placeholder="<?php echo $car['car_maker']; echo $car['car_year']; ?>" value="<?php echo $car['car_id']; ?>" name="book-car" /> 
+                                        <input type="hidden" placeholder="<?php echo $car['car_maker']; echo $car['car_year']; ?>" value="<?php echo $car['car_id']; ?>" required name="book-car" /> 
                                             <?php }?>
                                         <?php } else { ?>
-                                        <input type="text" placeholder="YOUR NAME" value="" name="book-name" pattern="[A-Za-z]+"  />
-                                        <input type="email" placeholder="EMAIL ADDRESS" value="" name="book-email"  pattern="[^ @]*@[^ @]*" />
-                                        <input type="tel" placeholder="PHONE NUMBER" value="" name="book-phone" pattern="[0-9]+" /> <!-- required  -->
-                                        <input type="hidden" placeholder="<?php echo $car['car_maker']; echo $car['car_year']; ?>" value="<?php echo $car['car_id']; ?>" name="book-car" /> 
+                                        <input type="text" placeholder="YOUR NAME" value="" name="book-name" required pattern="[A-Za-z]+"  />
+                                        <input type="email" placeholder="EMAIL ADDRESS" value="" name="book-email"  required pattern="[^ @]*@[^ @]*" />
+                                        <input type="tel" placeholder="PHONE NUMBER" value="" name="book-phone" required pattern="[0-9]+" /> <!-- required  -->
+                                        <input type="hidden" placeholder="<?php echo $car['car_maker']; echo $car['car_year']; ?>" value="<?php echo $car['car_id']; ?>" required name="book-car" /> 
                                         <?php } ?>
                                         <div class="s-relative">
                                             <select name="book-time" class="m-select">
