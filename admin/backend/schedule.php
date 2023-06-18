@@ -7,14 +7,14 @@ $email = $_POST['form-email'];
 $sch_emp = $_POST['form-emp'];
 $sch_car = $_POST['form-car'];
 $sch_time = $_POST['form-time'];
-$sch_status = "On-Time";
+$sch_status = "On Time";
 
 $query = "SELECT * FROM custumer WHERE cus_email = '$email'";
 $cus = mysqli_query($conn, $query);
 if (mysqli_num_rows($cus) > 0){
 	$custumers = mysqli_fetch_array($cus); 
     $sch_cus = $custumers['cus_id'];
-    $queryA = "INSERT INTO schedule (sch_cus, sch_emp, sch_car, sch_time) VALUES ('$sch_cus', '$sch_emp', '$sch_car', '$sch_time')";
+    $queryA = "INSERT INTO schedule (sch_cus, sch_emp, sch_car, sch_time, sch_status) VALUES ('$sch_cus', '$sch_emp', '$sch_car', '$sch_time', '$sch_status')";
 } else {
     $query1 = "INSERT INTO custumer (cus_name, cus_password, cus_email, cus_phone) VALUES ('$name','$phone','$email','$phone')";
     if (mysqli_query($conn, $query1)){
@@ -37,7 +37,7 @@ if (mysqli_num_rows($cus) > 0){
             $cus_nw = $custumer['nw_id']; 
         }
     }
-    $queryA = "INSERT INTO schedule (sch_cus, sch_cus_nw, sch_emp, sch_car, sch_time) VALUES ('cus_id','$cus_nw', '$sch_emp', '$sch_car', '$sch_time')";
+    $queryA = "INSERT INTO schedule (sch_cus, sch_cus_nw, sch_emp, sch_car, sch_time, sch_status) VALUES ('cus_id','$cus_nw', '$sch_emp', '$sch_car', '$sch_time', '$sch_status')";
 }
 
 if (mysqli_query($conn, $queryA)){ 

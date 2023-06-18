@@ -289,6 +289,8 @@ $schedules = mysqli_query($conn, $queryG);
                                 <?php
                                 $labels['On Time']['class'] = "label-success";
                                 $labels['On Time']['text'] = "On Time";
+                                $labels['On-Time']['class'] = "label-success";
+                                $labels['On-Time']['text'] = "On Time";
                                 $labels['Delay']['class'] = "label-info";
                                 $labels['Delay']['text'] = "Delay";
                                 $labels['Cancel']['class'] = "label-danger";
